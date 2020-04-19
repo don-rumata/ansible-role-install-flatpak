@@ -1,0 +1,41 @@
+galaxy_info:
+  author: don Rumata
+  description: Install Flatpak for Linux
+  company: localhost
+
+  # If the issue tracker for your role is not on github, uncomment the
+  # next line and provide a value
+  # issue_tracker_url: http://example.com/issue/tracker
+
+  license: Apache License, Version 2.0
+
+  # I don't know :(
+  min_ansible_version: 2.9
+
+  platforms:
+    - name: Fedora
+      versions:
+        - 31
+        - 30
+    - name: Ubuntu
+      versions:
+        - eoan
+        - disco
+        - cosmic
+        - bionic
+        - xenial
+        - trusty
+    - name: Debian
+      version:
+        - jessie                                                                                                                   
+        - stretch                                                                                                                  
+        - buster 
+
+  galaxy_tags:
+    - linux
+    - flatpak
+    - fluthub
+    - "package-manager"
+
+dependencies: []
+ 

@@ -1,0 +1,105 @@
+---
+# https://flatpak.org/setup/Ubuntu/
+# https://community.kde.org/Guidelines_and_HOWTOs/Flatpak
+- name: Install flatpak 4 Debian\Ubuntu\Debian-Ubuntu-like
+  become: yes
+  when: 
+    # - ansible_distribution in ['Debian', 'Ubuntu']
+    - ansible_os_family == 'Debian'
+  block:
+    - apt_repository:
+        repo: ppa:alexlarsson/flatpak
+        state: present
+        update_cache: no
+      when: ansible_distribution == 'Ubuntu'
+    - apt:
+        update_cache: yes
+    - apt:
+        name:
+          - flatpak
+          - xdg-utils
+          - xdg-desktop-portal
+          - xdg-desktop-portal-gtk
+        state: latest
+        install_recommends: yes
+    - apt:
+        name:
+          - gnome-software-plugin-flatpak
+        state: latest
+        install_recommends: yes
+      when: ansible_distribution == 'Debian'
+  tags:
+    - linux
+    - flatpak
+    - install
+    - debian
+    - ubuntu
+    - deb
+
+# https://flatpak.org/setup/CentOS/
+- name: Install flatpak 4 CentOS\RHEL
+  when:
+    - ansible_os_family == 'RedHat'
+    - ansible_pkg_mgr == 'yum'
+  vars:
+    # https://stackoverflow.com/a/47091066/5430535
+    # https://github.com/ansible/ansible/issues/32532#issuecomment-341641007
+    ansible_python_interpreter: /usr/bin/python2.7
+  become: yes
+  block:
+    - yum:
+        name:
+          - flatpak
+          - xdg-utils
+          - xdg-desktop-portal
+          - xdg-desktop-portal-gtk
+        state: latest
+  tags:
+    - linux
+    - flatpak
+    - install
+    - rhel
+    - centos
+    - yum
+    - rpm
+
+# https://flatpak.org/setup/Fedora/
+- name: Install flatpak 4 Fedora
+  when:
+    - ansible_os_family == 'RedHat'
+    - ansible_pkg_mgr == 'dnf'
+  become: yes
+  block:
+    - dnf:
+        name:
+          - flatpak
+          - xdg-utils
+          - xdg-desktop-portal
+          - xdg-desktop-portal-gtk
+        state: latest
+  tags:
+    - linux
+    - flatpak
+    - install
+    - rhel
+    - fedora
+    - dnf
+    - rpm
+
+# https://flatpak.org/setup/Ubuntu/
+# https://flatpak.org/setup/Fedora/
+- name: Add the flathub flatpak repository
+  when: ansible_system == 'Linux'
+  become: yes
+  block:
+    - flatpak_remote:
+        name: flathub
+        flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+        method: system
+        state: present
+  tags:
+    - linux
+    - flatpak
+    - install
+    - config
+    - repo
