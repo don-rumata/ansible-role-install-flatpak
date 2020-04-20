@@ -27,9 +27,13 @@ galaxy_info:
         - trusty
     - name: Debian
       version:
-        - jessie                                                                                                                   
-        - stretch                                                                                                                  
-        - buster 
+        - jessie
+        - stretch
+        - buster
+    - name: CentOS
+      versions:
+        - 8
+        - 7
 
   galaxy_tags:
     - linux
