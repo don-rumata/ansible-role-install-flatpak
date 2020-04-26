@@ -57,7 +57,3 @@ Author Information
 TODO
 ----
   - Add tests.
-
-Thanks
-------
-[Qarkai](https://github.com/qarkai)
