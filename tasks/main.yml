@@ -86,6 +86,30 @@
     - dnf
     - rpm
 
+# https://flatpak.org/setup/openSUSE/
+- name: Install flatpak 4 OpenSUSE
+  when:
+    - ansible_system == 'Linux'
+    - ansible_os_family == 'Suse'
+    - ansible_pkg_mgr == 'zypper'
+  become: yes
+  block:
+    - zypper:
+        name:
+          - flatpak
+          - xdg-utils
+          - xdg-desktop-portal
+          - xdg-desktop-portal-lang
+        state: latest
+  tags:
+    - linux
+    - flatpak
+    - install
+    - suse
+    - opensuse
+    - zypper
+    - rpm
+
 # https://flatpak.org/setup/Ubuntu/
 # https://flatpak.org/setup/Fedora/
 - name: Add the flathub flatpak repository

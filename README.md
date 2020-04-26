@@ -56,5 +56,8 @@ Author Information
 
 TODO
 ----
-  - Add support OpenSUSE.
   - Add tests.
+
+Thanks
+------
+[Qarkai](https://github.com/qarkai)
