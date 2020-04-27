@@ -20,12 +20,12 @@
           - xdg-utils
           - xdg-desktop-portal
           - xdg-desktop-portal-gtk
-        state: latest
+        state: present
         install_recommends: yes
     - apt:
         name:
           - gnome-software-plugin-flatpak
-        state: latest
+        state: present
         install_recommends: yes
       when: ansible_distribution == 'Debian'
   tags:
@@ -53,7 +53,7 @@
           - xdg-utils
           - xdg-desktop-portal
           - xdg-desktop-portal-gtk
-        state: latest
+        state: present
   tags:
     - linux
     - flatpak
@@ -76,7 +76,7 @@
           - xdg-utils
           - xdg-desktop-portal
           - xdg-desktop-portal-gtk
-        state: latest
+        state: present
   tags:
     - linux
     - flatpak
@@ -100,7 +100,7 @@
           - xdg-utils
           - xdg-desktop-portal
           - xdg-desktop-portal-lang
-        state: latest
+        state: present
   tags:
     - linux
     - flatpak
