@@ -3,10 +3,43 @@ Ansible Role: Install Flatpak and add Flathub repo
 
 Install [Flatpak](https://flatpak.org/) for Linux.
 
+Work on
+------------
+
+```yaml
+  platforms:
+    - name: Fedora
+      versions:
+        - 31
+        - 30
+    - name: Ubuntu
+      versions:
+        - eoan
+        - disco
+        - cosmic
+        - bionic
+        - xenial
+        - trusty
+    - name: Debian
+      version:
+        - jessie
+        - stretch
+        - buster
+        - stable
+        - testing
+    - name: EL (CentOS)
+      versions:
+        - 8
+        - 7
+    - name: opensuse
+      vesrion:
+        - tumbleweed
+```
+
 Requirements
 ------------
 
-None.
+[min_ansible_version: 2.6](https://docs.ansible.com/ansible/latest/modules/flatpak_module.html)
 
 Role Variables
 --------------
@@ -42,7 +75,6 @@ install-firefox-over-flatpak.yml
         - firefox
         - flatpak
 ```
-
 
 License
 -------
