@@ -34,6 +34,9 @@ Work on
     - name: opensuse
       vesrion:
         - tumbleweed
+    - name: ArchLinux
+      version:
+        - any
 ```
 
 Requirements

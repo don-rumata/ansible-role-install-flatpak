@@ -110,6 +110,25 @@
     - zypper
     - rpm
 
+- name: Install Flatpak 4 Archlinux
+  when:
+    - ansible_os_family == 'Archlinux'
+    - ansible_pkg_mgr == 'pacman'
+  become: yes
+  block:
+    - pacman:
+        name:
+          - flatpak
+          - xdg-utils
+          - xdg-desktop-portal
+        state: present
+  tags:
+    - linux
+    - flatpak
+    - install
+    - archlinux
+    - pacman
+
 # https://flatpak.org/setup/Ubuntu/
 # https://flatpak.org/setup/Fedora/
 - name: Add the flathub flatpak repository
