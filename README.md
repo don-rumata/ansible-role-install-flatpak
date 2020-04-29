@@ -1,10 +1,8 @@
-Ansible Role: Install Flatpak and add Flathub repo
-===================================================
+# Ansible Role: Install Flatpak and add Flathub repo
 
 Install [Flatpak](https://flatpak.org/) for Linux.
 
-Work on
-------------
+## Work on
 
 ```yaml
   platforms:
@@ -39,26 +37,23 @@ Work on
         - any
 ```
 
-Requirements
-------------
+## Requirements
 
 [min_ansible_version: 2.6](https://docs.ansible.com/ansible/latest/modules/flatpak_module.html)
 
-Role Variables
---------------
+## Role Variables
 
 None.
 
-Dependencies
-------------
+## Dependencies
 
 None.
 
-Example Playbook
-----------------
+## Example Playbook
 
-install-firefox-over-flatpak.yml
-```yml
+`install-firefox-over-flatpak.yml`:
+
+```yaml
 - name: Install FireFox
   hosts: all
   strategy: free
@@ -79,16 +74,14 @@ install-firefox-over-flatpak.yml
         - flatpak
 ```
 
-License
--------
+## License
 
 Apache License, Version 2.0
 
-Author Information
-------------------
+## Author Information
 
 [don Rumata](https://github.com/don-rumata)
 
-TODO
-----
-  - Add tests.
+## TODO
+
+- Add tests.
