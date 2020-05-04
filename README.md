@@ -8,6 +8,7 @@ Install [Flatpak](https://flatpak.org/) for Linux.
   platforms:
     - name: Fedora
       versions:
+        - 32
         - 31
         - 30
     - name: Ubuntu
