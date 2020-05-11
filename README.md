@@ -1,6 +1,6 @@
 # Ansible Role: Install Flatpak and add Flathub repo
 
-[![License][license-image]][license-url]
+[![License][license-image]][license-url] [![Ansible Galaxy][ansible-galaxy-image]][ansible-galaxy-url]
 
 Install [Flatpak](https://flatpak.org/) for Linux.
 
@@ -91,3 +91,6 @@ Apache License, Version 2.0
 
 [license-image]: https://img.shields.io/github/license/don-rumata/ansible-role-install-flatpak.svg
 [license-url]: https://opensource.org/licenses/Apache-2.0
+
+[ansible-galaxy-image]: https://img.shields.io/badge/galaxy-don__rumata.ansible__role__install__flatpak-blue.svg
+[ansible-galaxy-url]: https://galaxy.ansible.com/don_rumata/ansible_role_install_flatpak
