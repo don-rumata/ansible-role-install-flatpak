@@ -1,39 +1,35 @@
 ---
-# https://flatpak.org/setup/Ubuntu/
 # https://community.kde.org/Guidelines_and_HOWTOs/Flatpak
-- name: Install flatpak 4 Debian\Ubuntu\Debian-Ubuntu-like
-  become: yes
+- name: Add repo flatpak 4 Ubuntu
   when: 
-    # - ansible_distribution in ['Debian', 'Ubuntu']
-    - ansible_os_family == 'Debian'
-  block:
-    - apt_repository:
-        repo: ppa:alexlarsson/flatpak
-        state: present
-        update_cache: no
-      when: ansible_distribution == 'Ubuntu'
-    - apt:
-        update_cache: yes
-    - apt:
-        name:
-          - flatpak
-          - xdg-utils
-          - xdg-desktop-portal
-          - xdg-desktop-portal-gtk
-        state: present
-        install_recommends: yes
-    - apt:
-        name:
-          - gnome-software-plugin-flatpak
-        state: present
-        install_recommends: yes
-      when: ansible_distribution == 'Debian'
+    - ansible_distribution == 'Ubuntu'
+    - ansible_distribution_release != 'focal'
+  become: yes
+  apt_repository:
+    repo: ppa:alexlarsson/flatpak
+    state: present
+    update_cache: yes
+  tags:
+    - linux
+    - flatpak
+    - ubuntu
+    - deb
+    - repo
+
+- name: Install Debian only package
+  when: 
+    - ansible_distribution == 'Debian'
+  become: yes
+  apt:
+    name:
+      - gnome-software-plugin-flatpak
+    state: present
+    install_recommends: yes
   tags:
     - linux
     - flatpak
     - install
     - debian
-    - ubuntu
     - deb
 
 # https://flatpak.org/setup/CentOS/
@@ -46,14 +42,13 @@
     # https://github.com/ansible/ansible/issues/32532#issuecomment-341641007
     ansible_python_interpreter: /usr/bin/python2.7
   become: yes
-  block:
-    - yum:
-        name:
-          - flatpak
-          - xdg-utils
-          - xdg-desktop-portal
-          - xdg-desktop-portal-gtk
-        state: present
+  yum:
+    name:
+      - flatpak
+      - xdg-utils
+      - xdg-desktop-portal
+      - xdg-desktop-portal-gtk
+    state: present
   tags:
     - linux
     - flatpak
@@ -63,83 +58,32 @@
     - yum
     - rpm
 
-# https://flatpak.org/setup/Fedora/
-- name: Install flatpak 4 Fedora
-  when:
-    - ansible_os_family == 'RedHat'
-    - ansible_pkg_mgr == 'dnf'
-  become: yes
-  block:
-    - dnf:
-        name:
-          - flatpak
-          - xdg-utils
-          - xdg-desktop-portal
-          - xdg-desktop-portal-gtk
-        state: present
-  tags:
-    - linux
-    - flatpak
-    - install
-    - rhel
-    - fedora
-    - dnf
-    - rpm
-
-# https://flatpak.org/setup/openSUSE/
-- name: Install flatpak 4 OpenSUSE
+- name: Install snapd 4 any Linux distros
   when:
     - ansible_system == 'Linux'
-    - ansible_os_family == 'Suse'
-    - ansible_pkg_mgr == 'zypper'
+    - not (ansible_pkg_mgr == 'yum')
   become: yes
-  block:
-    - zypper:
-        name:
-          - flatpak
-          - xdg-utils
-          - xdg-desktop-portal
-          - xdg-desktop-portal-lang
-        state: present
+  package:
+    name:
+      - flatpak
+      - xdg-utils
+      - xdg-desktop-portal
+    state: present
   tags:
     - linux
     - flatpak
     - install
-    - suse
-    - opensuse
-    - zypper
-    - rpm
-
-- name: Install Flatpak 4 Archlinux
-  when:
-    - ansible_os_family == 'Archlinux'
-    - ansible_pkg_mgr == 'pacman'
-  become: yes
-  block:
-    - pacman:
-        name:
-          - flatpak
-          - xdg-utils
-          - xdg-desktop-portal
-        state: present
-  tags:
-    - linux
-    - flatpak
-    - install
-    - archlinux
-    - pacman
 
 # https://flatpak.org/setup/Ubuntu/
 # https://flatpak.org/setup/Fedora/
 - name: Add the flathub flatpak repository
   when: ansible_system == 'Linux'
   become: yes
-  block:
-    - flatpak_remote:
-        name: flathub
-        flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
-        method: system
-        state: present
+  flatpak_remote:
+    name: flathub
+    flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+    method: system
+    state: present
   tags:
     - linux
     - flatpak
