@@ -87,7 +87,8 @@ Apache License, Version 2.0
 
 ## TODO
 
-- Add tests.
+- ~~Add tests.~~
+- Add more tests.
 
 [license-image]: https://img.shields.io/github/license/don-rumata/ansible-role-install-flatpak.svg
 [license-url]: https://opensource.org/licenses/Apache-2.0
