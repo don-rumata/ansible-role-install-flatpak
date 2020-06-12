@@ -1,6 +1,8 @@
 ---
 - import_tasks: update-cache.yml
 
+- import_tasks: install-dependencies.yml
+
 # https://community.kde.org/Guidelines_and_HOWTOs/Flatpak
 - name: Add repo flatpak 4 Ubuntu
   when: 

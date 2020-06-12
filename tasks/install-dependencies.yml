@@ -1,0 +1,10 @@
+---
+- name: Install dirmngr 4 deb-based distro
+  when:
+    - ansible_os_family == 'Debian'
+    - ansible_pkg_mgr == 'apt'
+    - ansible_architecture == 'x86_64'
+  become: yes
+  apt:
+    name: dirmngr
+    state: present
