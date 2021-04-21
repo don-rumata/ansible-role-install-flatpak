@@ -1,13 +1,26 @@
 ---
 - import_tasks: update-cache.yml
+  when: ansible_virtualization_type == 'docker'
 
 - import_tasks: install-dependencies.yml
 
+- name: Get info about ppa exist
+  when:
+    - ansible_distribution == 'Ubuntu'
+  uri:
+    url: http://ppa.launchpad.net/alexlarsson/flatpak/ubuntu/dists/{{ ansible_distribution_release }}/Release
+    method: GET
+    return_content: no
+    status_code:
+      - 200
+      - 404
+  register: flatpak_repo_exist
+
 # https://community.kde.org/Guidelines_and_HOWTOs/Flatpak
 - name: Add repo flatpak 4 Ubuntu
-  when: 
+  when:
     - ansible_distribution == 'Ubuntu'
-    - ansible_distribution_release != 'focal'
+    - flatpak_repo_exist.status != 404
   become: yes
   apt_repository:
     repo: ppa:alexlarsson/flatpak
@@ -62,7 +75,7 @@
     - yum
     - rpm
 
-- name: Install snapd 4 any Linux distros
+- name: Install flatpak 4 any Linux distros
   when:
     - ansible_system == 'Linux'
     - not (ansible_pkg_mgr == 'yum')
