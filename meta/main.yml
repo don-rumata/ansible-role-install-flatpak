@@ -11,8 +11,7 @@ galaxy_info:
   platforms:
     - name: Fedora
       versions:
-        - 31
-        - 32
+        - 33
     - name: Ubuntu
       versions:
         - focal
@@ -29,6 +28,7 @@ galaxy_info:
         - 8
     - name: opensuse
       vesrion:
+        - 15.2
         - tumbleweed
     - name: ArchLinux
       version:

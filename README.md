@@ -1,6 +1,6 @@
 # Ansible Role: Install Flatpak and add Flathub repo
 
-[![License][license-image]][license-url] [![Ansible Galaxy][ansible-galaxy-image]][ansible-galaxy-url] [![CircleCI][circleci-image]][circleci-url]
+[![License][license-image]][license-url] [![Ansible Galaxy][ansible-galaxy-image]][ansible-galaxy-url] [![CircleCI][circleci-image]][circleci-url] [![Ansible Galaxy Quality][ansible-galaxy-quality-image]][ansible-galaxy-url]
 
 Install [Flatpak](https://flatpak.org/) for Linux.
 
@@ -10,9 +10,7 @@ Install [Flatpak](https://flatpak.org/) for Linux.
   platforms:
     - name: Fedora
       versions:
-        - 32
-        - 31
-        - 30
+        - 33
     - name: Ubuntu
       versions:
         - eoan
@@ -98,3 +96,5 @@ Apache License, Version 2.0
 
 [circleci-image]: https://circleci.com/gh/don-rumata/ansible-role-install-flatpak.svg?style=shield
 [circleci-url]: https://circleci.com/gh/don-rumata/ansible-role-install-flatpak
+
+[ansible-galaxy-quality-image]: https://img.shields.io/ansible/quality/48079
