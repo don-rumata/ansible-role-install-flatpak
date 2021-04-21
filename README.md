@@ -13,12 +13,9 @@ Install [Flatpak](https://flatpak.org/) for Linux.
         - 33
     - name: Ubuntu
       versions:
-        - eoan
-        - disco
-        - cosmic
+        - focal
         - bionic
         - xenial
-        - trusty
     - name: Debian
       version:
         - jessie
